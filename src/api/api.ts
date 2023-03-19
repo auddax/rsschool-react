@@ -1,5 +1,5 @@
 const apiKey = process.env.REACT_APP_API_KEY;
-const url = `https://sheets.googleapis.com/v4/spreadsheets/1uBjBThvJR6Eweme8Kd66GKbWmH9oh42Tbf_qKD0qkmQ/values/catalog?alt=json&key=${apiKey}`;
+const url = `https://sheets.googleapis.com/v4/spreadsheets/19W3P5W8uXVw3XUseuqzn2l0phEZ_Yhx-nTbLNJfrj64/values/catalog?alt=json&key=${apiKey}`;
 
 const getProducts = async () => {
   try {
