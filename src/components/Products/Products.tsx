@@ -20,7 +20,6 @@ class Products extends React.Component<object, { isLoading: boolean; products: [
 
   render(): ReactNode {
     const { products } = this.state;
-    console.log(products);
     return (
       <section className={styles['products']}>
         <ProductsList products={products} />

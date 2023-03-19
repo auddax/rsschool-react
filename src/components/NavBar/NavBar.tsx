@@ -11,10 +11,14 @@ class NavBar extends React.Component {
         <img className={styles['navbar__logo']} src={logoImage} alt="Organic Food Logo" />
         <ul className={styles['navbar__items']}>
           <li>
-            <Link to={'/main'}>Home</Link>{' '}
+            <Link to={'/main'} className={styles['navbar__link']}>
+              Home
+            </Link>{' '}
           </li>
           <li>
-            <Link to={'/about'}>About us</Link>
+            <Link to={'/about'} className={styles['navbar__link']}>
+              About us
+            </Link>
           </li>
         </ul>
         <div className={styles['navbar__controls']}>
