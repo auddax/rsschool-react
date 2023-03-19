@@ -5,3 +5,7 @@ export interface ProductsListProps {
 export interface ProductCardProps {
   data: [];
 }
+
+export interface CardProps {
+  children: React.ReactNode;
+}

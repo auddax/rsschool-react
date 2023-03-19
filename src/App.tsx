@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Main from 'pages/Main';
+import Main from './pages/Main';
 import './App.css';
 
 class App extends React.Component {

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import SearchForm from 'components/SearchForm';
+import SearchForm from '../SearchForm';
 import logoImage from '../../assets/img/logo.png';
 import styles from './NavBar.module.css';
 

@@ -1,10 +1,11 @@
 import React, { ReactNode } from 'react';
 import { ProductCardProps } from 'types/interfaces';
+import Card from '../Card';
 import styles from './ProductCard.module.css';
 
 class ProductCard extends React.Component<ProductCardProps> {
   render(): ReactNode {
-    const { data } = this.props;
+    const data: string[] = this.props.data;
     return (
       <Card>
         <figure className={styles['card-img']}>

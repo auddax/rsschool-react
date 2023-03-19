@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import ProductsList from 'components/ProductsList';
+import ProductsList from '../ProductsList';
 import styles from './Products.module.css';
-import getProducts from 'api/api';
+import getProducts from '../../api/api';
 
 class Products extends React.Component<object, { isLoading: boolean; products: [] }> {
   constructor(props: object) {
@@ -20,6 +20,7 @@ class Products extends React.Component<object, { isLoading: boolean; products: [
 
   render(): ReactNode {
     const { products } = this.state;
+    console.log(products);
     return (
       <section className={styles['products']}>
         <ProductsList products={products} />

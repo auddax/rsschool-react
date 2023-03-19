@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import ProductCard from 'components/ProductCard';
+import ProductCard from '../ProductCard';
 import { ProductsListProps } from 'types/interfaces';
 import styles from './ProductsList.module.css';
 
