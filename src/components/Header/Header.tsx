@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import NavBar from 'components/NavBar';
 import styles from './Header.module.css';
 
 class Header extends React.Component {
