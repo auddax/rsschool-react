@@ -18,12 +18,14 @@ const product: string[] = [
 describe('Testing ProductCard component', () => {
   afterEach(cleanup);
 
-  it('renders search input', () => {
+  it('renders card title', () => {
     const { getByRole } = render(<ProductCard data={product} />);
-
     const cardTitle = getByRole('heading');
     expect(cardTitle).toHaveTextContent(product[0]);
+  });
 
+  it('renders card image', () => {
+    const { getByRole } = render(<ProductCard data={product} />);
     const cardImage = getByRole('img');
     expect(cardImage).toHaveAttribute('src', product[3]);
   });
