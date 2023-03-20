@@ -5,7 +5,7 @@ import styles from './ProductCard.module.css';
 
 class ProductCard extends React.Component<ProductCardProps> {
   render(): ReactNode {
-    const data: string[] = this.props.data;
+    const data = this.props.data;
     return (
       <Card>
         <figure className={styles['card-img']}>

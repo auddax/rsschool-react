@@ -3,7 +3,7 @@ export interface ProductsListProps {
 }
 
 export interface ProductCardProps {
-  data: [];
+  data: string[];
 }
 
 export interface CardProps {
