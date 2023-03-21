@@ -1,0 +1,17 @@
+.error-message {
+  display: flex;
+  height: 70vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #d3d3d3;
+}
+
+.error-message h1 {
+  font-size: 6rem;
+  margin: 0 0 1rem;
+}
+
+.error-message h2 {
+  font-size: 2.5rem;
+}
