@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import ProductsList from '../ProductsList';
 import styles from './Products.module.css';
-import getProducts from '../../api/api';
+import { products } from '../../../__mocks__/products';
 import ErrorMessage from '../ErrorMessage';
 
-class Products extends React.Component<object, { isLoading: boolean; products: [] }> {
+class Products extends React.Component<object, { isLoading: boolean; products: string[][] }> {
   constructor(props: object) {
     super(props);
     this.state = {
@@ -14,8 +14,11 @@ class Products extends React.Component<object, { isLoading: boolean; products: [
   }
 
   componentDidMount() {
-    getProducts().then((data) => {
-      this.setState({ products: data });
+    // getProducts().then((data) => {
+    //   this.setState({ products: data });
+    // });
+    this.setState({
+      products,
     });
   }
 
