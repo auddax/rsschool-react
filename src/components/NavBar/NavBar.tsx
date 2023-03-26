@@ -3,8 +3,9 @@ import SearchForm from '../SearchForm';
 import logoImage from '../../assets/img/logo.png';
 import styles from './NavBar.module.css';
 import { Link } from 'react-router-dom';
+import { ILink } from 'types/interfaces';
 
-const navLinks = [
+const navLinks: ILink[] = [
   {
     text: 'Home',
     route: '/main',

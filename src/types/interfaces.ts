@@ -9,3 +9,8 @@ export interface ProductCardProps {
 export interface CardProps {
   children: React.ReactNode;
 }
+
+export interface ILink {
+  text: string;
+  route: string;
+}
