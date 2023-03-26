@@ -14,6 +14,10 @@ const navLinks: ILink[] = [
     text: 'About us',
     route: '/about',
   },
+  {
+    text: 'Reviews',
+    route: '/reviews',
+  },
 ];
 
 class NavBar extends React.Component {
