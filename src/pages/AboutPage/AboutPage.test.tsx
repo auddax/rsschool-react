@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import About from './About';
+import About from './AboutPage';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('Testing About component', () => {

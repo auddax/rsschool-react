@@ -1,0 +1,30 @@
+.reviews-header{
+  margin: 2rem;
+}
+.reviews-form {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  border: none;
+}
+
+.form-item-row {
+  display: flex;
+  margin: 1rem 0;
+  border: none;
+}
+
+.form-item-row * {
+  margin-right: 0.5rem;
+}
+
+.item__label {
+  font-weight: 500;
+  padding: 0 0.5rem 0.5rem 0;
+}

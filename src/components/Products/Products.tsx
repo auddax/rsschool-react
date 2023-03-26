@@ -13,7 +13,7 @@ class Products extends React.Component<object, { isLoading: boolean; products: s
     };
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     // getProducts().then((data) => {
     //   this.setState({ products: data });
     // });

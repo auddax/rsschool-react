@@ -1,10 +1,11 @@
-import ReviewsForm from 'components/ReviewsForm';
 import React, { ReactNode } from 'react';
+import ReviewsForm from '../ReviewsForm';
+import styles from './Reviews.module.css';
 
 class Reviews extends React.Component {
   render(): ReactNode {
     return (
-      <section>
+      <section className={styles['reviews']}>
         <ReviewsForm />
       </section>
     );

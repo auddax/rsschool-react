@@ -1,17 +1,16 @@
+import Reviews from '../../components/Reviews';
 import React, { ReactNode } from 'react';
 import Header from '../../components/Header';
-import Products from '../../components/Products';
-import './Main.module.css';
 
-class Main extends React.Component {
+class ReviewsPage extends React.Component {
   render(): ReactNode {
     return (
       <>
         <Header />
-        <Products />
+        <Reviews />
       </>
     );
   }
 }
 
-export default Main;
+export default ReviewsPage;

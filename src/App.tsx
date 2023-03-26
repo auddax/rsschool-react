@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Main from './pages/Main';
-import About from './pages/About';
-import Reviews from './pages/Reviews';
-import NotFound from './pages/NotFound';
+import Main from './pages/MainPage';
+import About from './pages/AboutPage';
+import Reviews from './pages/ReviewsPage';
+import NotFound from './pages/NotFoundPage';
 import './App.css';
 
 class App extends React.Component {

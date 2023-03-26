@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
 import Header from '../../components/Header';
-import styles from './About.module.css';
+import styles from './AboutPage.module.css';
 
 class About extends React.Component {
   render(): ReactNode {
     return (
       <>
         <Header />
-        <div className={styles['about']}>
+        <section className={styles['about']}>
           <p>
             Grocery Store - это свежие натуральные продукты питания, произведенные в соответствии с
             принципами органического сельского хозяйства.
@@ -18,7 +18,7 @@ class About extends React.Component {
             почвы и запрещает использование сельскохозяйственных химикатов (пестицидов,
             синтетических удобрений, гормональных препаратов и т.д.), генной инженерии.
           </p>
-        </div>
+        </section>
       </>
     );
   }

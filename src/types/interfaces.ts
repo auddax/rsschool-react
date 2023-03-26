@@ -1,5 +1,5 @@
 export interface ProductsListProps {
-  products: [];
+  products: string[][];
 }
 
 export interface ProductCardProps {
