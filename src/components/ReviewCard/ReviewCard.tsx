@@ -1,18 +1,17 @@
 import React, { ReactNode } from 'react';
+import { ReviewCardProps } from 'types/interfaces';
 import Card from '../Card';
 import styles from './ReviewCard.module.css';
 
-class ReviewCard extends React.Component {
+class ReviewCard extends React.Component<ReviewCardProps> {
   render(): ReactNode {
     const data = this.props.data;
     return (
       <Card>
-        <figure className={styles['card-img']}>
-          <img src={data[3]} alt={data[0].split(' ')[0]} />
-        </figure>
-        <h3 className={styles['card-title']}>{data[0]}</h3>
-        <p className={styles['card-price']}>Цена: {data[4]}</p>
-        <p className={styles['card-instock']}>Доступно: {data[8]}</p>
+        <p className={styles['card-price']}>Отзыв: {data.reviewText}</p>
+        <p className={styles['card-price']}>Дата: {data.purchaseDate}</p>
+        <p className={styles['card-price']}>Категория: {data.productType}</p>
+        <p className={styles['card-price']}>Оценка: {data.rate}</p>
       </Card>
     );
   }

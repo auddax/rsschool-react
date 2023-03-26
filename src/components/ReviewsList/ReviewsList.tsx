@@ -1,14 +1,15 @@
 import React, { ReactNode } from 'react';
+import { ReviewsListProps } from 'types/interfaces';
 import ReviewCard from '../ReviewCard';
 import styles from './ReviewsList.module.css';
 
-class ReviewsList extends React.Component {
+class ReviewsList extends React.Component<ReviewsListProps> {
   render(): ReactNode {
-    const { products } = this.props;
+    const { reviews } = this.props;
     return (
       <div className={styles['products-list']}>
-        {products.map((product) => {
-          return <ReviewCard data={product} key={product[1]} />;
+        {reviews.map((review, index) => {
+          return <ReviewCard data={review} key={'review' + index} />;
         })}
       </div>
     );

@@ -1,15 +1,25 @@
 import React, { FormEvent, ReactNode } from 'react';
 import styles from './ReviewsForm.module.css';
 import { products } from '../../../__mocks__/products';
+import { IReview } from 'types/interfaces';
 
-class ReviewsForm extends React.Component {
+class ReviewsForm extends React.Component<{ handleReviews: (review: IReview) => void }> {
   handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const review: IReview = {
+      reviewText: null,
+      purchaseDate: null,
+      productType: null,
+      visibility: null,
+      rate: null,
+      photo: null,
+    };
     const target = event.target as HTMLFormElement;
     const data = new FormData(target);
-    for (const key of data.keys()) {
-      console.log(key);
+    for (const pair of data.entries()) {
+      review[pair[0]] = pair[1];
     }
+    this.props.handleReviews(review);
   }
 
   render(): ReactNode {
@@ -26,21 +36,21 @@ class ReviewsForm extends React.Component {
             <label htmlFor="reviewText" className={styles['item__label']}>
               Напишите о своих впечатлениях
             </label>
-            <textarea name="review-text" id="reviewText" />
+            <textarea name="reviewText" id="reviewText" />
           </fieldset>
           <fieldset className={styles['form-item']}>
             <label htmlFor="purchaseDate" className={styles['item__label']}>
               Дата покупки
             </label>
-            <input type="date" name="purchase-date" id="purchaseDate" />
+            <input type="date" name="purchaseDate" id="purchaseDate" />
           </fieldset>
           <fieldset className={styles['form-item']}>
             <label htmlFor="productType" className={styles['item__label']}>
               Тип товара
             </label>
-            <select name="product-type" id="productType">
+            <select name="productType" id="productType">
               {types.map((type, index) => (
-                <option value={'type-' + index} key={'type-' + index}>
+                <option value={type} key={'type-' + index}>
                   {type}
                 </option>
               ))}
@@ -54,15 +64,15 @@ class ReviewsForm extends React.Component {
           </fieldset>
           <fieldset className={styles['form-item-row']}>
             <legend className={styles['item__label']}>Оцените товар</legend>
-            <input type="radio" name="rate" id="rate-1" />
+            <input type="radio" name="rate" id="rate-1" value="1" />
             <label htmlFor="rate-1">1</label>
-            <input type="radio" name="rate" id="rate-2" />
+            <input type="radio" name="rate" id="rate-2" value="2" />
             <label htmlFor="rate-2">2</label>
-            <input type="radio" name="rate" id="rate-3" />
+            <input type="radio" name="rate" id="rate-3" value="3" />
             <label htmlFor="rate-3">3</label>
-            <input type="radio" name="rate" id="rate-4" />
+            <input type="radio" name="rate" id="rate-4" value="4" />
             <label htmlFor="rate-4">4</label>
-            <input type="radio" name="rate" id="rate-5" />
+            <input type="radio" name="rate" id="rate-5" value="5" />
             <label htmlFor="rate-5">5</label>
           </fieldset>
           <fieldset className={styles['form-item']}>
