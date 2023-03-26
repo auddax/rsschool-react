@@ -1,8 +1,17 @@
-import React, { ReactNode } from 'react';
+import React, { FormEvent, ReactNode } from 'react';
 import styles from './ReviewsForm.module.css';
 import { products } from '../../../__mocks__/products';
 
 class ReviewsForm extends React.Component {
+  handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const target = event.target as HTMLFormElement;
+    const data = new FormData(target);
+    for (const key of data.keys()) {
+      console.log(key);
+    }
+  }
+
   render(): ReactNode {
     const types = products
       .map((product) => product[5])
@@ -12,7 +21,7 @@ class ReviewsForm extends React.Component {
     return (
       <div>
         <h2 className={styles['reviews-header']}>Оставьте свой отзыв о покупке!</h2>
-        <form className={styles['reviews-form']}>
+        <form className={styles['reviews-form']} onSubmit={(e) => this.handleSubmit(e)}>
           <fieldset className={styles['form-item']}>
             <label htmlFor="reviewText" className={styles['item__label']}>
               Напишите о своих впечатлениях
