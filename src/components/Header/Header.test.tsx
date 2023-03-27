@@ -14,6 +14,6 @@ describe('Testing Header component', () => {
       </BrowserRouter>
     );
     const title = getByRole('heading');
-    expect(title).toHaveTextContent('Our catalog');
+    expect(title).toHaveTextContent('Grocery Store');
   });
 });

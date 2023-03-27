@@ -8,7 +8,7 @@ class Header extends React.Component {
       <header>
         <NavBar />
         <div className={styles['title']}>
-          <h1>Our catalog</h1>
+          <h1>Grocery Store</h1>
         </div>
       </header>
     );
