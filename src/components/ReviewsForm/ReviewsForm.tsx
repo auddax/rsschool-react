@@ -1,9 +1,17 @@
 import React, { FormEvent, ReactNode } from 'react';
-import styles from './ReviewsForm.module.css';
+import SuccessModal from '../SuccessModal';
 import { products } from '../../../__mocks__/products';
-import { IReview } from 'types/interfaces';
+import { IReview, ReviewFormProps } from 'types/interfaces';
+import styles from './ReviewsForm.module.css';
 
-class ReviewsForm extends React.Component<{ handleReviews: (review: IReview) => void }> {
+class ReviewsForm extends React.Component<ReviewFormProps, { isReviewSend: boolean }> {
+  constructor(props: ReviewFormProps) {
+    super(props);
+    this.state = {
+      isReviewSend: false,
+    };
+  }
+
   handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const review: IReview = {
@@ -20,10 +28,19 @@ class ReviewsForm extends React.Component<{ handleReviews: (review: IReview) => 
     for (const pair of data.entries()) {
       review[pair[0]] = pair[1];
     }
+    this.setState({
+      isReviewSend: true,
+    });
     this.props.handleReviews(review);
+    setTimeout(() => {
+      this.setState({
+        isReviewSend: false,
+      });
+    }, 2000);
   }
 
   render(): ReactNode {
+    const { isReviewSend } = this.state;
     const types = products
       .map((product) => product[5])
       .filter((product, index, array) => array.indexOf(product) === index)
@@ -90,6 +107,7 @@ class ReviewsForm extends React.Component<{ handleReviews: (review: IReview) => 
           </fieldset>
           <button className={styles['form-button']}>Отправить отзыв</button>
         </form>
+        {isReviewSend && <SuccessModal data="Ваш отзыв отправлен!" />}
       </div>
     );
   }

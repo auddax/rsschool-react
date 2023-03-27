@@ -14,8 +14,24 @@ export interface ReviewCardProps {
   data: IReview;
 }
 
+export interface ReviewFormProps {
+  handleReviews: (review: IReview) => void;
+}
+
 export interface CardProps {
   children: React.ReactNode | React.ReactNode[];
+}
+
+export interface ModalProps {
+  message: string | string[];
+}
+
+export interface BackdropProps {
+  data: string | string[];
+}
+
+export interface SuccessModalProps {
+  data: string | string[];
 }
 
 export interface ILink {
