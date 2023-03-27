@@ -15,7 +15,7 @@ export interface ReviewCardProps {
 }
 
 export interface CardProps {
-  children: React.ReactNode;
+  children: React.ReactNode | React.ReactNode[];
 }
 
 export interface ILink {

@@ -8,10 +8,18 @@ class ReviewCard extends React.Component<ReviewCardProps> {
     const data = this.props.data;
     return (
       <Card>
-        <p className={styles['card-price']}>Отзыв: {data.reviewText}</p>
-        <p className={styles['card-price']}>Дата: {data.purchaseDate}</p>
-        <p className={styles['card-price']}>Категория: {data.productType}</p>
-        <p className={styles['card-price']}>Оценка: {data.rate}</p>
+        <p className={styles['card-price']}>
+          <>Отзыв: {data.reviewText}</>
+        </p>
+        <p className={styles['card-price']}>
+          <>Дата: {data.purchaseDate}</>
+        </p>
+        <p className={styles['card-price']}>
+          <>Категория: {data.productType}</>
+        </p>
+        <p className={styles['card-price']}>
+          <>Оценка: {data.rate}</>
+        </p>
       </Card>
     );
   }
