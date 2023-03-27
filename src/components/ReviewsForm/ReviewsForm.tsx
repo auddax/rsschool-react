@@ -10,6 +10,7 @@ class ReviewsForm extends React.Component<{ handleReviews: (review: IReview) => 
       reviewText: null,
       purchaseDate: null,
       productType: null,
+      customerName: null,
       visibility: null,
       rate: null,
       photo: null,
@@ -55,6 +56,12 @@ class ReviewsForm extends React.Component<{ handleReviews: (review: IReview) => 
                 </option>
               ))}
             </select>
+          </fieldset>
+          <fieldset className={styles['form-item']}>
+            <label htmlFor="customerName" className={styles['item__label']}>
+              Ваше имя
+            </label>
+            <input type="text" name="customerName" id="customerName" />
           </fieldset>
           <fieldset className={styles['form-item-row']}>
             <label htmlFor="visibility" className={styles['item__label']}>

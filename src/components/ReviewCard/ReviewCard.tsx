@@ -5,21 +5,30 @@ import styles from './ReviewCard.module.css';
 
 class ReviewCard extends React.Component<ReviewCardProps> {
   render(): ReactNode {
-    const data = this.props.data;
+    const { reviewText, purchaseDate, productType, rate, visibility, customerName } =
+      this.props.data;
+
     return (
       <Card>
         <p className={styles['card-price']}>
-          <>Отзыв: {data.reviewText}</>
+          <>Отзыв: {reviewText}</>
         </p>
         <p className={styles['card-price']}>
-          <>Дата: {data.purchaseDate}</>
+          <>Дата: {purchaseDate}</>
         </p>
         <p className={styles['card-price']}>
-          <>Категория: {data.productType}</>
+          <>Категория: {productType}</>
         </p>
         <p className={styles['card-price']}>
-          <>Оценка: {data.rate}</>
+          <>Оценка: {rate}</>
         </p>
+        {!visibility && (
+          <p>
+            <i>
+              <>{customerName}</>
+            </i>
+          </p>
+        )}
       </Card>
     );
   }
