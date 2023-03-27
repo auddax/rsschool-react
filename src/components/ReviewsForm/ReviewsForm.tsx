@@ -37,7 +37,7 @@ class ReviewsForm extends React.Component<{ handleReviews: (review: IReview) => 
             <label htmlFor="reviewText" className={styles['item__label']}>
               Напишите о своих впечатлениях
             </label>
-            <textarea name="reviewText" id="reviewText" />
+            <textarea name="reviewText" id="reviewText" rows={7} />
           </fieldset>
           <fieldset className={styles['form-item']}>
             <label htmlFor="purchaseDate" className={styles['item__label']}>
