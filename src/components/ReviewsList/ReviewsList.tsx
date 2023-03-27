@@ -7,7 +7,7 @@ class ReviewsList extends React.Component<ReviewsListProps> {
   render(): ReactNode {
     const { reviews } = this.props;
     return (
-      <div className={styles['products-list']}>
+      <div className={styles['reviews-list']}>
         {reviews.map((review, index) => {
           return <ReviewCard data={review} key={'review' + index} />;
         })}
