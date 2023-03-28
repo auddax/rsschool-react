@@ -2,7 +2,7 @@ import React, { FormEvent, ReactNode } from 'react';
 import SuccessModal from '../SuccessModal';
 import { products } from '../../../__mocks__/products';
 import { IReview, ReviewFormProps } from 'types/interfaces';
-import styles from './ReviewsForm.module.css';
+import styles from './ReviewsForm.module.scss';
 
 class ReviewsForm extends React.Component<ReviewFormProps, { isReviewSend: boolean }> {
   constructor(props: ReviewFormProps) {
