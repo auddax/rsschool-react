@@ -14,6 +14,7 @@ class ReviewsForm extends React.Component<ReviewFormProps, { isReviewSend: boole
 
   handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     const review: IReview = {
       reviewText: null,
       purchaseDate: null,
@@ -23,15 +24,20 @@ class ReviewsForm extends React.Component<ReviewFormProps, { isReviewSend: boole
       rate: null,
       photo: null,
     };
+
     const target = event.target as HTMLFormElement;
     const data = new FormData(target);
+
     for (const pair of data.entries()) {
       review[pair[0]] = pair[1];
     }
+
     this.setState({
       isReviewSend: true,
     });
+
     this.props.handleReviews(review);
+    target.reset();
     setTimeout(() => {
       this.setState({
         isReviewSend: false,
@@ -54,13 +60,13 @@ class ReviewsForm extends React.Component<ReviewFormProps, { isReviewSend: boole
             <label htmlFor="reviewText" className={styles['item__label']}>
               Напишите о своих впечатлениях
             </label>
-            <textarea name="reviewText" id="reviewText" rows={7} />
+            <textarea name="reviewText" id="reviewText" rows={7} required />
           </fieldset>
           <fieldset className={styles['form-item']}>
             <label htmlFor="purchaseDate" className={styles['item__label']}>
               Дата покупки
             </label>
-            <input type="date" name="purchaseDate" id="purchaseDate" />
+            <input type="date" name="purchaseDate" id="purchaseDate" required />
           </fieldset>
           <fieldset className={styles['form-item']}>
             <label htmlFor="productType" className={styles['item__label']}>
@@ -78,7 +84,7 @@ class ReviewsForm extends React.Component<ReviewFormProps, { isReviewSend: boole
             <label htmlFor="customerName" className={styles['item__label']}>
               Ваше имя
             </label>
-            <input type="text" name="customerName" id="customerName" />
+            <input type="text" name="customerName" id="customerName" required />
           </fieldset>
           <fieldset className={styles['form-item-row']}>
             <label htmlFor="visibility" className={styles['item__label']}>
