@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { ReviewCardProps } from 'types/interfaces';
 import Card from '../Card';
-import styles from './ReviewCard.module.css';
+import styles from './ReviewCard.module.scss';
 
 class ReviewCard extends React.Component<ReviewCardProps> {
   render(): ReactNode {

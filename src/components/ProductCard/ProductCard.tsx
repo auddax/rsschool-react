@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { ProductCardProps } from 'types/interfaces';
 import Card from '../Card';
-import styles from './ProductCard.module.css';
+import styles from './ProductCard.module.scss';
 
 class ProductCard extends React.Component<ProductCardProps> {
   render(): ReactNode {

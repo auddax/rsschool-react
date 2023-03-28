@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { BackdropProps } from 'types/interfaces';
 import Modal from '../Modal';
-import styles from './Backdrop.module.css';
+import styles from './Backdrop.module.scss';
 
 class Backdrop extends React.Component<BackdropProps> {
   render(): ReactNode {

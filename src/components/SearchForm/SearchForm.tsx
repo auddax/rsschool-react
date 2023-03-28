@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from './SearchForm.module.css';
+import styles from './SearchForm.module.scss';
 
 class SearchForm extends React.Component<object, { search: string }> {
   constructor(props: object) {

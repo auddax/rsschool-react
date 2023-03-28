@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import ProductsList from '../ProductsList';
-import styles from './Products.module.css';
-import { products } from '../../../__mocks__/products';
 import ErrorMessage from '../ErrorMessage';
+import { products } from '../../../__mocks__/products';
+import styles from './Products.module.scss';
 
 class Products extends React.Component<object, { isLoading: boolean; products: string[][] }> {
   constructor(props: object) {

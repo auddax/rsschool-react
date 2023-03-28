@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ModalProps } from 'types/interfaces';
-import styles from './Modal.module.css';
+import styles from './Modal.module.scss';
 
 class Modal extends React.Component<ModalProps> {
   render(): ReactNode {

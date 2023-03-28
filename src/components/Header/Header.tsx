@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import NavBar from '../NavBar';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 
 class Header extends React.Component {
   render(): ReactNode {

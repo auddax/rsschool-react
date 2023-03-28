@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from './NotFoundPage.module.css';
+import styles from './NotFoundPage.module.scss';
 
 class NotFound extends React.Component {
   render(): ReactNode {

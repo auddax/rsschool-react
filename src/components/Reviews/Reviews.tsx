@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import ReviewsList from '../ReviewsList';
 import ReviewsForm from '../ReviewsForm';
-import styles from './Reviews.module.css';
+import styles from './Reviews.module.scss';
 import { IReview } from 'types/interfaces';
 
 class Reviews extends React.Component<object, { reviews: IReview[] }> {
