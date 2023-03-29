@@ -1,0 +1,17 @@
+.search-form input {
+  height: 2.5rem;
+  width: 15rem;
+  padding: 0.25rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  border: 2px solid rgb(20, 219, 20);
+  background-color: transparent;
+  border-radius: 20px;
+}
+
+.search-form input:focus {
+  outline: none;
+  box-shadow: none;
+  border: 2px solid rgb(20, 219, 20);
+  
+}
