@@ -11,7 +11,6 @@ const ReviewsForm = (props: ReviewFormProps) => {
   const { handleReviews } = props;
 
   const onSubmit: SubmitHandler<IReview> = (data) => {
-    console.log(data);
     setIsReviewSend(true);
     handleReviews(data);
     setTimeout(() => {
