@@ -37,16 +37,22 @@ const ReviewsForm = (props: ReviewFormProps) => {
       <h2 className={styles['reviews-header']}>Оставьте свой отзыв о покупке!</h2>
       <form className={styles['reviews-form']} onSubmit={handleSubmit(onSubmit)}>
         <fieldset className={styles['form-item']}>
-          <label htmlFor="reviewText" className={styles['item__label']}>
+          <label
+            htmlFor="reviewText"
+            className={`${styles['item__label']} ${styles['label_required']}`}
+          >
             Напишите о своих впечатлениях
           </label>
-          <textarea id="reviewText" rows={7} {...register('reviewText', { required: true })} />
+          <textarea id="reviewText" rows={7} {...register('reviewText')} required />
         </fieldset>
         <fieldset className={styles['form-item']}>
-          <label htmlFor="purchaseDate" className={styles['item__label']}>
+          <label
+            htmlFor="purchaseDate"
+            className={`${styles['item__label']} ${styles['label_required']}`}
+          >
             Дата покупки
           </label>
-          <input type="date" id="purchaseDate" {...register('purchaseDate', { required: true })} />
+          <input type="date" id="purchaseDate" {...register('purchaseDate')} required />
         </fieldset>
         <fieldset className={styles['form-item']}>
           <label htmlFor="productType" className={styles['item__label']}>
@@ -61,10 +67,13 @@ const ReviewsForm = (props: ReviewFormProps) => {
           </select>
         </fieldset>
         <fieldset className={styles['form-item']}>
-          <label htmlFor="customerName" className={styles['item__label']}>
+          <label
+            htmlFor="customerName"
+            className={`${styles['item__label']} ${styles['label_required']}`}
+          >
             Ваше имя
           </label>
-          <input type="text" id="customerName" {...register('customerName', { required: true })} />
+          <input type="text" id="customerName" {...register('customerName')} required />
         </fieldset>
         <fieldset className={styles['form-item-row']}>
           <label htmlFor="visibility" className={styles['item__label']}>

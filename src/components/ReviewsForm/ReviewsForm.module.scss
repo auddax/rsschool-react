@@ -41,6 +41,11 @@
     padding: 0 0.5rem 0.5rem 0;
   }
 
+  .label_required:after {
+    content:" *";
+    color: red;  
+  }
+
   .form-button {
     width: 50%;
     display: block;
