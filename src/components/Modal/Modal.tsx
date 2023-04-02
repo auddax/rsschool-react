@@ -1,15 +1,13 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ModalProps } from 'types/interfaces';
 import styles from './Modal.module.scss';
 
-class Modal extends React.Component<ModalProps> {
-  render(): ReactNode {
-    return (
-      <div className={styles['modal']}>
-        <h4>{this.props.message}</h4>
-      </div>
-    );
-  }
-}
+const Modal = (props: ModalProps) => {
+  return (
+    <div className={styles['modal']}>
+      <h4>{props.message}</h4>
+    </div>
+  );
+};
 
 export default Modal;
