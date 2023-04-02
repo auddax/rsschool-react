@@ -7,7 +7,7 @@ import { IReview } from 'types/interfaces';
 const Reviews = () => {
   const [reviews, setReviews] = useState<IReview[]>([]);
 
-  const handleReviews = (review: IReview) => {
+  const handleReviews = (review: IReview): void => {
     setReviews((prevState: IReview[]) => [...prevState, review]);
   };
 
