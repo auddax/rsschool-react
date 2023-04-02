@@ -1,0 +1,76 @@
+.reviews-header {
+  margin: 2rem;
+}
+
+.reviews-form {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    border: none;
+
+    input {
+      height: 1.75rem;
+    }
+
+    select {
+      height: 1.75rem;
+    }
+  }
+
+  .form-item-row {
+    display: flex;
+    margin: 1rem 0;
+    border: none;
+
+    * {
+      margin-right: 0.5rem;
+    }
+
+    label {
+      padding-bottom: 0;
+    }
+  }
+
+  .item__label {
+    font-weight: 500;
+    padding: 0 0.5rem 0.5rem 0;
+  }
+
+  .label_required:after {
+    content:" *";
+    color: red;  
+  }
+
+  .form-button {
+    width: 50%;
+    display: block;
+    margin: 2rem auto;
+    font-size: 1rem;
+    height: 38px;
+    outline: none;
+    border: none;
+    background-color: rgb(20, 219, 20);
+    border: 2px solid rgb(20, 219, 20);
+    color: white;
+    border-radius: 50px;
+    transition: all 0.4s;
+    cursor: pointer;
+
+    &:hover {
+      outline: none;
+      border: 2px solid rgb(20, 219, 20);
+      background: transparent;
+      color: rgb(20, 219, 20);
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+

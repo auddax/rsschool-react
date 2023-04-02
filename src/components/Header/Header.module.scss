@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Gloss and Bloom";
+  src: url("../../assets/fonts/Gloss_And_Bloom.ttf");
+  }
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  background-color: #14db14;
+  background-image: linear-gradient(135deg, #14db14 15%, #38ef7d 99%);
+}
+
+.title h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  font-family: "Gloss and Bloom";
+  font-weight: 400;
+}
