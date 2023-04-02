@@ -39,6 +39,10 @@ export interface ILink {
   route: string;
 }
 
+export interface IPhotoList {
+  [index: number]: FormDataEntryValue | FileList;
+}
+
 export interface IReview {
   [index: string]: FormDataEntryValue | FileList | string | null;
 }
