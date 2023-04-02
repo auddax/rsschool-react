@@ -1,11 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { CardProps } from 'types/interfaces';
 import styles from './Card.module.scss';
 
-class Card extends React.Component<CardProps> {
-  render(): ReactNode {
-    return <article className={styles['card']}>{this.props.children}</article>;
-  }
-}
+const Card = (props: CardProps) => {
+  return <article className={styles['card']}>{props.children}</article>;
+};
 
 export default Card;
