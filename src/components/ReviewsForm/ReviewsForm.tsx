@@ -8,17 +8,20 @@ import styles from './ReviewsForm.module.scss';
 const ReviewsForm = (props: ReviewFormProps) => {
   const { handleReviews } = props;
   const [isReviewSend, setIsReviewSend] = useState<boolean>(false);
-  const { register, handleSubmit, reset, formState } = useForm<IReview>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitSuccessful },
+  } = useForm<IReview>();
 
   useEffect(() => {
-    if (formState.isSubmitSuccessful) {
-      reset();
-    }
-  }, [formState, reset]);
+    if (isSubmitSuccessful) reset();
+  }, [isSubmitSuccessful, reset]);
 
   const onSubmit: SubmitHandler<IReview> = (data) => {
+    handleReviews(structuredClone(data));
     setIsReviewSend(true);
-    handleReviews(data);
     setTimeout(() => {
       setIsReviewSend(false);
     }, 2000);
