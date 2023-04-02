@@ -1,4 +1,5 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import SuccessModal from '../SuccessModal';
 import { products } from '../../../__mocks__/products';
 import { IReview, ReviewFormProps } from 'types/interfaces';
@@ -6,31 +7,13 @@ import styles from './ReviewsForm.module.scss';
 
 const ReviewsForm = (props: ReviewFormProps) => {
   const [isReviewSend, setIsReviewSend] = useState<boolean>(false);
+  const { register, handleSubmit } = useForm<IReview>();
   const { handleReviews } = props;
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const review: IReview = {
-      reviewText: null,
-      purchaseDate: null,
-      productType: null,
-      customerName: null,
-      visibility: null,
-      rate: null,
-      photo: null,
-    };
-
-    const target = event.target as HTMLFormElement;
-    const data = new FormData(target);
-
-    for (const pair of data.entries()) {
-      review[pair[0]] = pair[1];
-    }
-
+  const onSubmit: SubmitHandler<IReview> = (data) => {
+    console.log(data);
     setIsReviewSend(true);
-    handleReviews(review);
-    target.reset();
+    handleReviews(data);
     setTimeout(() => {
       setIsReviewSend(false);
     }, 2000);
@@ -44,24 +27,24 @@ const ReviewsForm = (props: ReviewFormProps) => {
   return (
     <div>
       <h2 className={styles['reviews-header']}>Оставьте свой отзыв о покупке!</h2>
-      <form className={styles['reviews-form']} onSubmit={(e) => handleSubmit(e)}>
+      <form className={styles['reviews-form']} onSubmit={handleSubmit(onSubmit)}>
         <fieldset className={styles['form-item']}>
           <label htmlFor="reviewText" className={styles['item__label']}>
             Напишите о своих впечатлениях
           </label>
-          <textarea name="reviewText" id="reviewText" rows={7} required />
+          <textarea id="reviewText" rows={7} {...register('reviewText', { required: true })} />
         </fieldset>
         <fieldset className={styles['form-item']}>
           <label htmlFor="purchaseDate" className={styles['item__label']}>
             Дата покупки
           </label>
-          <input type="date" name="purchaseDate" id="purchaseDate" required />
+          <input type="date" id="purchaseDate" {...register('purchaseDate', { required: true })} />
         </fieldset>
         <fieldset className={styles['form-item']}>
           <label htmlFor="productType" className={styles['item__label']}>
             Тип товара
           </label>
-          <select name="productType" id="productType">
+          <select id="productType" {...register('productType')}>
             {types.map((type, index) => (
               <option value={type} key={'type-' + index}>
                 {type}
@@ -73,32 +56,32 @@ const ReviewsForm = (props: ReviewFormProps) => {
           <label htmlFor="customerName" className={styles['item__label']}>
             Ваше имя
           </label>
-          <input type="text" name="customerName" id="customerName" required />
+          <input type="text" id="customerName" {...register('customerName', { required: true })} />
         </fieldset>
         <fieldset className={styles['form-item-row']}>
           <label htmlFor="visibility" className={styles['item__label']}>
             Оставить отзыв анонимно
           </label>
-          <input type="checkbox" name="visibility" id="visibility" />
+          <input type="checkbox" id="visibility" {...register('visibility')} />
         </fieldset>
         <fieldset className={styles['form-item-row']}>
           <legend className={styles['item__label']}>Оцените товар</legend>
-          <input type="radio" name="rate" id="rate-1" value="1" />
+          <input type="radio" id="rate-1" value="1" {...register('rate')} />
           <label htmlFor="rate-1">1</label>
-          <input type="radio" name="rate" id="rate-2" value="2" />
+          <input type="radio" id="rate-2" value="2" {...register('rate')} />
           <label htmlFor="rate-2">2</label>
-          <input type="radio" name="rate" id="rate-3" value="3" />
+          <input type="radio" id="rate-3" value="3" {...register('rate')} />
           <label htmlFor="rate-3">3</label>
-          <input type="radio" name="rate" id="rate-4" value="4" />
+          <input type="radio" id="rate-4" value="4" {...register('rate')} />
           <label htmlFor="rate-4">4</label>
-          <input type="radio" name="rate" id="rate-5" value="5" />
+          <input type="radio" id="rate-5" value="5" {...register('rate')} />
           <label htmlFor="rate-5">5</label>
         </fieldset>
         <fieldset className={styles['form-item']}>
           <label htmlFor="photo" className={styles['item__label']}>
             Фото товара
           </label>
-          <input type="file" name="photo" id="photo" />
+          <input type="file" id="photo" {...register('photo')} />
         </fieldset>
         <button className={styles['form-button']}>Отправить отзыв</button>
       </form>

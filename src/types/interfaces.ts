@@ -40,5 +40,5 @@ export interface ILink {
 }
 
 export interface IReview {
-  [index: string]: FormDataEntryValue | File | string | null;
+  [index: string]: FormDataEntryValue | FileList | string | null;
 }
