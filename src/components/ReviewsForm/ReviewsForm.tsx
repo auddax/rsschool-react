@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import SuccessModal from '../SuccessModal';
 import { productsList } from '../../../__mocks__/products';
@@ -6,9 +6,15 @@ import { IReview, ReviewFormProps } from 'types/interfaces';
 import styles from './ReviewsForm.module.scss';
 
 const ReviewsForm = (props: ReviewFormProps) => {
-  const [isReviewSend, setIsReviewSend] = useState<boolean>(false);
-  const { register, handleSubmit } = useForm<IReview>();
   const { handleReviews } = props;
+  const [isReviewSend, setIsReviewSend] = useState<boolean>(false);
+  const { register, handleSubmit, reset, formState } = useForm<IReview>();
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset();
+    }
+  }, [formState, reset]);
 
   const onSubmit: SubmitHandler<IReview> = (data) => {
     setIsReviewSend(true);
