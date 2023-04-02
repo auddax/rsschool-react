@@ -1,4 +1,4 @@
-export const products = [
+export const productsList = [
   [
     'Базилик зеленый 100г.',
     'https://freshlavka.com/product/bazilik-zelenyj-kg/',

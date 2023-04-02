@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import SuccessModal from '../SuccessModal';
-import { products } from '../../../__mocks__/products';
+import { productsList } from '../../../__mocks__/products';
 import { IReview, ReviewFormProps } from 'types/interfaces';
 import styles from './ReviewsForm.module.scss';
 
@@ -18,7 +18,7 @@ const ReviewsForm = (props: ReviewFormProps) => {
     }, 2000);
   };
 
-  const types = products
+  const types = productsList
     .map((product) => product[5])
     .filter((product, index, array) => array.indexOf(product) === index)
     .sort();
