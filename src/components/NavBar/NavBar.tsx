@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ILink } from 'types/interfaces';
 import SearchForm from '../SearchForm';
@@ -20,26 +20,24 @@ const navLinks: ILink[] = [
   },
 ];
 
-class NavBar extends React.Component {
-  render(): ReactNode {
-    return (
-      <nav className={styles['navbar']}>
-        <img className={styles['navbar__logo']} src={logoImage} alt="Organic Food Logo" />
-        <ul className={styles['navbar__items']}>
-          {navLinks.map((link) => (
-            <li key={link.route}>
-              <Link to={link.route} className={styles['navbar__link']}>
-                {link.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className={styles['navbar__controls']}>
-          <SearchForm />
-        </div>
-      </nav>
-    );
-  }
-}
+const NavBar = () => {
+  return (
+    <nav className={styles['navbar']}>
+      <img className={styles['navbar__logo']} src={logoImage} alt="Organic Food Logo" />
+      <ul className={styles['navbar__items']}>
+        {navLinks.map((link) => (
+          <li key={link.route}>
+            <Link to={link.route} className={styles['navbar__link']}>
+              {link.text}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <div className={styles['navbar__controls']}>
+        <SearchForm />
+      </div>
+    </nav>
+  );
+};
 
 export default NavBar;
