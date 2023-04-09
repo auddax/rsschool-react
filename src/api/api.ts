@@ -25,6 +25,6 @@ export const getPhotosList = async (params = {}) => {
 };
 
 export const searchPhotos = async (params = { query: '' }) => {
-  const result = await getUnsplashData('/photos', params);
-  return result;
+  const { results } = await getUnsplashData('/search/photos', params);
+  return results;
 };

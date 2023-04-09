@@ -6,7 +6,9 @@ export interface PhotosListProps {
 
 export interface SearchContextType {
   photosList: IPhoto[];
+  isLoading: boolean;
   setPhotosList: Dispatch<SetStateAction<IPhoto[]>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface PhotoCardProps {

@@ -11,6 +11,7 @@ import './App.css';
 
 const App = () => {
   const [photosList, setPhotosList] = useState<IPhoto[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getPhotosList().then((data) => {
@@ -19,7 +20,7 @@ const App = () => {
   }, []);
 
   return (
-    <SearchContext.Provider value={{ photosList, setPhotosList }}>
+    <SearchContext.Provider value={{ photosList, isLoading, setPhotosList, setIsLoading }}>
       <Routes>
         <Route path="/" element={<Navigate to="/main" />} />
         <Route path="/main" element={<Main />} />
