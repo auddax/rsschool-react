@@ -1,5 +1,12 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface PhotosListProps {
   photosList: IPhoto[];
+}
+
+export interface SearchContextType {
+  photosList: IPhoto[];
+  setPhotosList: Dispatch<SetStateAction<IPhoto[]>>;
 }
 
 export interface PhotoCardProps {
