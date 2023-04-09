@@ -1,15 +1,30 @@
 const apiKey = import.meta.env.VITE_API_KEY;
-const url = `https://sheets.googleapis.com/v4/spreadsheets/19W3P5W8uXVw3XUseuqzn2l0phEZ_Yhx-nTbLNJfrj64/values/catalog?alt=json&key=${apiKey}`;
+const baseUrl = 'https://api.unsplash.com';
 
-const getProducts = async () => {
+const getUnsplashData = async (endpoint: string, params: object) => {
+  let url = `${baseUrl}${endpoint}?`;
+  if (Object.keys(params).length > 0) {
+    for (const [key, value] of Object.entries(params)) {
+      url += `${key}=${value}&`;
+    }
+  }
+  url += `client_id=${apiKey}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
-    return data.values.slice(1);
+    return data;
   } catch (error) {
-    console.log('getProducts ', error);
+    console.log('getUnsplashData error: ', error);
     return null;
   }
 };
 
-export default getProducts;
+export const getPhotosList = async (params = {}) => {
+  const result = await getUnsplashData('/photos', params);
+  return result;
+};
+
+export const searchPhotos = async (params = { query: '' }) => {
+  const result = await getUnsplashData('/photos', params);
+  return result;
+};
