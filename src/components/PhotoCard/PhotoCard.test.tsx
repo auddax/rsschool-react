@@ -10,7 +10,7 @@ const photo: IPhoto = {
   color: '#c0a6a6',
   created_at: '2023-04-06T09:11:23Z',
   current_user_collections: [],
-  description: null,
+  description: '',
   height: 5400,
   id: 'PfBvNnGIhmQ',
   liked_by_user: false,
@@ -52,8 +52,14 @@ const photo: IPhoto = {
 describe('Testing PhotoCard component', () => {
   afterEach(cleanup);
 
+  const props = {
+    handlerClick: jest.fn(),
+    data: photo,
+    key: 'key',
+  };
+
   it('renders card image', () => {
-    const { getByRole } = render(<PhotoCard data={photo} />);
+    const { getByRole } = render(<PhotoCard {...props} />);
     const cardImage = getByRole('img');
     expect(cardImage).toHaveAttribute('src', photo.urls.small);
   });
