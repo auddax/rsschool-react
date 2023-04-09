@@ -2,31 +2,59 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import PhotoCard from './PhotoCard';
+import { IPhoto } from '../../types/interfaces';
 
-const product: string[] = [
-  'Базилик зеленый 100г.',
-  'https://freshlavka.com/product/bazilik-zelenyj-kg/',
-  'Цена указана за 100г. Базилик не только очень ароматная и душистая приправа, но еще и очень полезный и диетический продукт. За счет низкого количества килокалорий его можно смело добавлять в кулинарные блюда, не боясь резкого увеличения пищевой ценности. Наиболее часто его можно встретить в салатах, в сочетаниях с рыбой, морепродуктами и мясом. В состав базилика входит много аскорбиновой кислоты, камфары, каротина и витаминов: В, РР, К, А. Обнаружено в полезном растении эфирное масло, рутин. Также базилик обладает множеством чудесных полезных свойств. Он оказывает благотворное влияние на сердечно-сосудистую систему человека за счет содержания ароматических масел в своем составе. Базилик помогает сконцентрироваться, он активизирует мыслительную деятельность мозга. Благодаря витамину А, базилик укрепляет ногти, оздоравливает волосы и кожу. За счет содержания большого количества витаминов (А, В, С, Е, К) и минералов (кальций, магний, железо, цинк, медь, калий) базилик поддерживает крепкий иммунитет человека. Средний вес одного стебелька с листочками  – 10-25 граммов',
-  'https://freshlavka.com/wp-content/uploads/2016/05/IMG_0084-1.jpg',
-  '330 руб.',
-  'Овощи и зелень',
-  'Зелень',
-  'Армения',
-  '116',
-];
+const photo: IPhoto = {
+  alt_description: 'a pink plate with a single flower on it',
+  blur_hash: 'L5M?VpMd~q$+58jZx[WB_No#DiRi',
+  color: '#c0a6a6',
+  created_at: '2023-04-06T09:11:23Z',
+  current_user_collections: [],
+  description: null,
+  height: 5400,
+  id: 'PfBvNnGIhmQ',
+  liked_by_user: false,
+  likes: 2,
+  links: {
+    self: 'https://api.unsplash.com/photos/PfBvNnGIhmQ',
+    html: 'https://unsplash.com/photos/PfBvNnGIhmQ',
+    download:
+      'https://unsplash.com/photos/PfBvNnGIhmQ/download?i…nw0MzM2NjZ8MHwxfGFsbHwxfHx8fHx8Mnx8MTY4MTA1Mzc0Mw',
+    download_location:
+      'https://api.unsplash.com/photos/PfBvNnGIhmQ/downlo…nw0MzM2NjZ8MHwxfGFsbHwxfHx8fHx8Mnx8MTY4MTA1Mzc0Mw',
+  },
+  promoted_at: '2023-04-09T14:42:27Z',
+  sponsorship: null,
+  topic_submissions: {},
+  updated_at: '2023-04-09T14:42:27Z',
+  urls: {
+    raw: 'https://images.unsplash.com/photo-1680771447988-94…fGFsbHwxfHx8fHx8Mnx8MTY4MTA1Mzc0Mw&ixlib=rb-4.0.3',
+    full: 'https://images.unsplash.com/photo-1680771447988-94…HwxfHx8fHx8Mnx8MTY4MTA1Mzc0Mw&ixlib=rb-4.0.3&q=85',
+    regular:
+      'https://images.unsplash.com/photo-1680771447988-94…fHx8Mnx8MTY4MTA1Mzc0Mw&ixlib=rb-4.0.3&q=80&w=1080',
+    small:
+      'https://images.unsplash.com/photo-1680771447988-94…8fHx8Mnx8MTY4MTA1Mzc0Mw&ixlib=rb-4.0.3&q=80&w=400',
+    small_s3:
+      'https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1680771447988-94c040d9868b',
+    thumb:
+      'https://images.unsplash.com/photo-1680771447988-94…8fHx8Mnx8MTY4MTA1Mzc0Mw&ixlib=rb-4.0.3&q=80&w=200',
+  },
+  user: {
+    id: 'kVsHbbKSThA',
+    updated_at: '2023-04-09T14:42:27Z',
+    username: 'foodism360',
+    name: 'rebootanika by foodism360',
+    first_name: 'rebootanika by',
+  },
+  width: 3600,
+};
 
 describe('Testing PhotoCard component', () => {
   afterEach(cleanup);
 
-  it('renders card title', () => {
-    const { getByRole } = render(<PhotoCard data={product} />);
-    const cardTitle = getByRole('heading');
-    expect(cardTitle).toHaveTextContent(product[0]);
-  });
-
   it('renders card image', () => {
-    const { getByRole } = render(<PhotoCard data={product} />);
+    const { getByRole } = render(<PhotoCard data={photo} />);
     const cardImage = getByRole('img');
-    expect(cardImage).toHaveAttribute('src', product[3]);
+    expect(cardImage).toHaveAttribute('src', photo.urls.small);
   });
 });
