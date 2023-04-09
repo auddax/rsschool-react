@@ -102,7 +102,7 @@ const ReviewsForm = (props: ReviewFormProps) => {
         </fieldset>
         <button className={styles['form-button']}>Отправить отзыв</button>
       </form>
-      {isReviewSend && <SuccessModal data="Ваш отзыв отправлен!" />}
+      {isReviewSend && <SuccessModal data={{ type: 'success', data: 'Ваш отзыв отправлен!' }} />}
     </div>
   );
 };

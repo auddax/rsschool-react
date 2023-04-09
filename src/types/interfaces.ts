@@ -12,7 +12,9 @@ export interface SearchContextType {
 }
 
 export interface PhotoCardProps {
+  handlerClick: () => void;
   data: IPhoto;
+  key: string;
 }
 
 export interface ReviewsListProps {
@@ -28,19 +30,27 @@ export interface ReviewFormProps {
 }
 
 export interface CardProps {
+  handlerClick: () => void;
   children: React.ReactNode | React.ReactNode[];
 }
 
-export interface ModalProps {
-  message: string | string[];
-}
-
-export interface BackdropProps {
-  data: string | string[];
-}
-
 export interface SuccessModalProps {
-  data: string | string[];
+  data: ModalProps;
+}
+
+export interface BackdropModalProps {
+  handlerClick: () => void;
+  data: ModalProps;
+}
+
+export interface PhotoModalProps {
+  handlerClick: () => void;
+  data: ModalProps;
+}
+
+export interface ModalProps {
+  type: string;
+  data: IPhoto | string | null;
 }
 
 export interface ILink {
@@ -49,12 +59,12 @@ export interface ILink {
 }
 
 export interface IPhoto {
-  alt_description: string | null;
+  alt_description: string | undefined;
   blur_hash: string | null;
   color: string | null;
   created_at: string;
   current_user_collections: [];
-  description: string | null;
+  description: string | undefined;
   height: number;
   id: string;
   liked_by_user: boolean;
@@ -65,7 +75,7 @@ export interface IPhoto {
   topic_submissions: object;
   updated_at: string | null;
   urls: IPhotoUrls;
-  user: object;
+  user: IPhotoUser;
   width: number;
 }
 
@@ -76,6 +86,14 @@ export interface IPhotoUrls {
   small: string;
   small_s3: string;
   thumb: string;
+}
+
+export interface IPhotoUser {
+  id: string;
+  updated_at: string;
+  username: string;
+  name: string;
+  first_name: string;
 }
 
 export interface IPhotoList {

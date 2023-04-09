@@ -8,7 +8,7 @@ class PhotoCard extends React.Component<PhotoCardProps> {
     const data = this.props.data;
     const createDate = new Date(data.created_at).toLocaleDateString('ru');
     return (
-      <Card>
+      <Card handlerClick={this.props.handlerClick}>
         <figure className={styles['card-img']}>
           <img src={data.urls.small} alt={data.alt_description || 'Unsplash photo'} />
         </figure>

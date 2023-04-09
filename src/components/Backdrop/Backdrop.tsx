@@ -1,12 +1,13 @@
 import React from 'react';
-import { BackdropProps } from 'types/interfaces';
+import { BackdropModalProps } from 'types/interfaces';
 import Modal from '../Modal';
 import styles from './Backdrop.module.scss';
 
-const Backdrop = (props: BackdropProps) => {
+const Backdrop = (props: BackdropModalProps) => {
+  const { type, data } = props.data;
   return (
-    <div className={styles['backdrop']}>
-      <Modal message={props.data} />
+    <div onClick={props.handlerClick} className={styles['backdrop']}>
+      <Modal type={type} data={data} />
     </div>
   );
 };
