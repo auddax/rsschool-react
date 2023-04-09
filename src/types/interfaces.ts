@@ -30,7 +30,7 @@ export interface ReviewFormProps {
 }
 
 export interface CardProps {
-  handlerClick: () => void;
+  handlerClick?: () => void;
   children: React.ReactNode | React.ReactNode[];
 }
 
@@ -39,7 +39,7 @@ export interface SuccessModalProps {
 }
 
 export interface BackdropModalProps {
-  handlerClick: () => void;
+  handlerClick?: () => void;
   data: ModalProps;
 }
 
