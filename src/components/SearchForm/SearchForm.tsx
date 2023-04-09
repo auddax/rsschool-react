@@ -21,13 +21,15 @@ const SearchForm = () => {
     <form className={styles['search-form']}>
       <input
         type="search"
-        placeholder=" Search"
+        placeholder=" Search photos"
         id="itemsSearch"
         autoComplete="off"
         value={searchInput}
         onChange={handleSearchInput}
+        className={styles['search-form__input']}
         autoFocus
       />
+      <button type="button" className={styles['search-form__btn']}></button>
     </form>
   );
 };
