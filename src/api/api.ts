@@ -1,4 +1,4 @@
-const apiKey = import.meta.env.VITE_API_KEY;
+const apiKey = import.meta.env.VITE_API_KEY; // Place your API key here
 const baseUrl = 'https://api.unsplash.com';
 
 const getUnsplashData = async (endpoint: string, params: object) => {
