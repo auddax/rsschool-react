@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import ProductCard from './ProductCard';
+import PhotoCard from './PhotoCard';
 
 const product: string[] = [
   'Базилик зеленый 100г.',
@@ -15,17 +15,17 @@ const product: string[] = [
   '116',
 ];
 
-describe('Testing ProductCard component', () => {
+describe('Testing PhotoCard component', () => {
   afterEach(cleanup);
 
   it('renders card title', () => {
-    const { getByRole } = render(<ProductCard data={product} />);
+    const { getByRole } = render(<PhotoCard data={product} />);
     const cardTitle = getByRole('heading');
     expect(cardTitle).toHaveTextContent(product[0]);
   });
 
   it('renders card image', () => {
-    const { getByRole } = render(<ProductCard data={product} />);
+    const { getByRole } = render(<PhotoCard data={product} />);
     const cardImage = getByRole('img');
     expect(cardImage).toHaveAttribute('src', product[3]);
   });

@@ -1,6 +1,5 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import ReviewsForm from './ReviewsForm';
 
 describe('Testing ReviewsForm component', () => {

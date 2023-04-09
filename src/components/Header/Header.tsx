@@ -7,7 +7,7 @@ const Header = () => {
     <header>
       <NavBar />
       <div className={styles['title']}>
-        <h1>Grocery Store</h1>
+        <h1>Unsearch!</h1>
       </div>
     </header>
   );

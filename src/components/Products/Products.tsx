@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ProductsList from '../ProductsList';
+import PhotosList from '../PhotosList';
 import ErrorMessage from '../ErrorMessage';
 import { getPhotosList } from '../../api/api';
 import styles from './Products.module.scss';
+import { IPhoto } from 'types/interfaces';
 
 const Products = () => {
-  const [photosList, setPhotosList] = useState<string[][]>([]);
+  const [photosList, setPhotosList] = useState<IPhoto[]>([]);
 
   useEffect(() => {
     getPhotosList().then((data) => {
@@ -15,7 +16,7 @@ const Products = () => {
 
   return (
     <section className={styles['products']}>
-      {photosList ? <ProductsList products={photosList} /> : <ErrorMessage />}
+      {photosList ? <PhotosList photosList={photosList} /> : <ErrorMessage />}
     </section>
   );
 };
