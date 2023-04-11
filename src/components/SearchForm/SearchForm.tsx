@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, FormEvent } from 'react';
 import SearchContext from '../../context/SearchContext';
 import { searchPhotos } from '../../api/api';
 import { SearchContextType } from '../../types/interfaces';
@@ -21,7 +21,8 @@ const SearchForm = () => {
     localStorage.setItem('searchValue', value);
   };
 
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsLoading(true);
     // To make loading process more visible
     setTimeout(() => {
@@ -33,7 +34,7 @@ const SearchForm = () => {
   };
 
   return (
-    <form className={styles['search-form']}>
+    <form onSubmit={(e) => handleSearchSubmit(e)} className={styles['search-form']}>
       <input
         type="search"
         placeholder=" Search photos"
@@ -44,11 +45,7 @@ const SearchForm = () => {
         className={styles['search-form__input']}
         autoFocus
       />
-      <button
-        type="button"
-        onClick={handleSearchSubmit}
-        className={styles['search-form__btn']}
-      ></button>
+      <button className={styles['search-form__btn']}></button>
     </form>
   );
 };
