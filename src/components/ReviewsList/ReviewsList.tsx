@@ -1,10 +1,10 @@
 import React from 'react';
-import { ReviewsListProps } from 'types/interfaces';
 import ReviewCard from '../ReviewCard';
 import styles from './ReviewsList.module.scss';
+import { useAppSelector } from '../../hooks/redux';
 
-const ReviewsList = (props: ReviewsListProps) => {
-  const { reviews } = props;
+const ReviewsList = () => {
+  const { reviews } = useAppSelector((state) => state.formReducer);
   return (
     <div className={styles['reviews-list']}>
       {reviews.map((review, index) => {

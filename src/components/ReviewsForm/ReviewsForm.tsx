@@ -2,25 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import SuccessModal from '../SuccessModal';
 import { productsList } from '../../../__mocks__/products';
-import { IReview, ReviewFormProps } from 'types/interfaces';
+import { IReview } from 'types/interfaces';
 import styles from './ReviewsForm.module.scss';
+import { formSlice } from '../../store/reducers/FormSlice';
+import { useAppDispatch } from '../../hooks/redux';
 
-const ReviewsForm = (props: ReviewFormProps) => {
-  const { handleReviews } = props;
+const ReviewsForm = () => {
   const [isReviewSend, setIsReviewSend] = useState<boolean>(false);
+  const { addReview } = formSlice.actions;
   const {
     register,
     handleSubmit,
     reset,
     formState: { isSubmitSuccessful },
   } = useForm<IReview>();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isSubmitSuccessful) reset();
   }, [isSubmitSuccessful, reset]);
 
   const onSubmit: SubmitHandler<IReview> = (data) => {
-    handleReviews(structuredClone(data));
+    dispatch(addReview(data));
     setIsReviewSend(true);
     setTimeout(() => {
       setIsReviewSend(false);

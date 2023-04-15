@@ -17,16 +17,8 @@ export interface PhotoCardProps {
   key: string;
 }
 
-export interface ReviewsListProps {
-  reviews: IReview[];
-}
-
 export interface ReviewCardProps {
   data: IReview;
-}
-
-export interface ReviewFormProps {
-  handleReviews: (review: IReview) => void;
 }
 
 export interface CardProps {
