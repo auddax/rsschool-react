@@ -1,18 +1,20 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import ReviewsForm from './ReviewsForm';
+import { setupStore } from '../../store/store';
+import { Provider } from 'react-redux';
+
+const store = setupStore();
 
 describe('Testing ReviewsForm component', () => {
   afterEach(cleanup);
 
-  const handleReviews = jest.fn();
-
-  const props = {
-    handleReviews,
-  };
-
   it('renders form inputs', () => {
-    const { getByLabelText } = render(<ReviewsForm {...props} />);
+    const { getByLabelText } = render(
+      <Provider store={store}>
+        <ReviewsForm />
+      </Provider>
+    );
 
     const reviewText = getByLabelText('Напишите о своих впечатлениях');
     expect(reviewText).toBeDefined();

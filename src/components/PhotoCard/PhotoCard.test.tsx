@@ -3,6 +3,10 @@ import { cleanup, render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import PhotoCard from './PhotoCard';
 import { IPhoto } from '../../types/interfaces';
+import { setupStore } from '../../store/store';
+import { Provider } from 'react-redux';
+
+const store = setupStore();
 
 const photo: IPhoto = {
   alt_description: 'a pink plate with a single flower on it',
@@ -59,7 +63,11 @@ describe('Testing PhotoCard component', () => {
   };
 
   it('renders card image', () => {
-    const { getByRole } = render(<PhotoCard {...props} />);
+    const { getByRole } = render(
+      <Provider store={store}>
+        <PhotoCard {...props} />
+      </Provider>
+    );
     const cardImage = getByRole('img');
     expect(cardImage).toHaveAttribute('src', photo.urls.small);
   });
