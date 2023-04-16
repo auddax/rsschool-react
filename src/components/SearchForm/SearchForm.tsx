@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useContext, FormEvent } from 'react';
-import SearchContext from '../../context/SearchContext';
+import React, { useState, useEffect, FormEvent } from 'react';
 import { searchPhotos } from '../../api/api';
-import { SearchContextType } from '../../types/interfaces';
 import styles from './SearchForm.module.scss';
 
 const SearchForm = () => {
   const [searchInput, setSearchInput] = useState('');
-  const { setIsLoading, setPhotosList } = useContext(SearchContext) as SearchContextType;
-
   useEffect(() => {
     const value = localStorage.getItem('searchValue');
     if (value) {

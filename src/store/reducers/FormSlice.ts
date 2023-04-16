@@ -1,16 +1,16 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IReview } from '../../types/interfaces';
 
-interface UserState {
+interface ReviewState {
   reviews: IReview[];
 }
 
-const initialState: UserState = {
+const initialState: ReviewState = {
   reviews: [],
 };
 
 export const formSlice = createSlice({
-  name: 'user',
+  name: 'review',
   initialState,
   reducers: {
     addReview(state, action: PayloadAction<IReview>) {

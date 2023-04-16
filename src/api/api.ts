@@ -1,3 +1,5 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 const apiKey = import.meta.env.VITE_API_KEY; // Place your API key here
 const baseUrl = 'https://api.unsplash.com';
 
@@ -28,3 +30,19 @@ export const searchPhotos = async (params = { query: '' }) => {
   const { results } = await getUnsplashData('/search/photos', params);
   return results;
 };
+
+export const unsplashAPI = createApi({
+  reducerPath: 'unspashAPI',
+  baseQuery: fetchBaseQuery({ baseUrl }),
+  endpoints: (builder) => ({
+    getPhotosList: builder.query({
+      query: (page = 10, client_id = apiKey) => ({
+        url: '/photos',
+        params: {
+          page,
+          client_id,
+        },
+      }),
+    }),
+  }),
+});
