@@ -1,32 +1,46 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { searchPhotos } from '../../api/api';
+import { skipToken } from '@reduxjs/toolkit/dist/query';
+import { photoSlice } from '../../store/reducers/PhotoSlice';
+import { unsplashAPI } from '../../api/api';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import styles from './SearchForm.module.scss';
 
 const SearchForm = () => {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState<string>('');
+  const [submitInput, setSubmitInput] = useState<string | typeof skipToken>(skipToken);
+  const { searchValue } = useAppSelector((state) => state.photoReducer);
+  const { setPhotosList, setSearchValue } = photoSlice.actions;
+  const dispatch = useAppDispatch();
+  const { data, isLoading, isSuccess, error } = unsplashAPI.useSearchPhotosQuery(submitInput);
+
   useEffect(() => {
-    const value = localStorage.getItem('searchValue');
-    if (value) {
-      setSearchInput(value);
+    if (data) {
+      dispatch(
+        setPhotosList({
+          photos: data?.results,
+          isLoading,
+          isSuccess,
+          error,
+        })
+      );
     }
-  }, []);
+  }, [data, dispatch, error, isLoading, isSuccess, setPhotosList, submitInput]);
+
+  useEffect(() => {
+    if (searchValue) {
+      setSearchInput(searchValue);
+    }
+  }, [searchValue]);
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const value = e.target.value;
     setSearchInput(value);
-    localStorage.setItem('searchValue', value);
+    dispatch(setSearchValue(value));
   };
 
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-    // To make loading process more visible
-    setTimeout(() => {
-      searchPhotos({ query: searchInput }).then((data) => {
-        setPhotosList(data);
-        setIsLoading(false);
-      });
-    }, 1000);
+    setSubmitInput(searchInput);
   };
 
   return (
