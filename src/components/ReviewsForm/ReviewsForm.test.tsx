@@ -1,5 +1,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
+import { describe, it, expect, afterEach } from 'vitest';
+import '@testing-library/jest-dom/extend-expect';
 import ReviewsForm from './ReviewsForm';
 import { setupStore } from '../../store/store';
 import { Provider } from 'react-redux';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
+import { describe, it, expect, afterEach } from 'vitest';
 import '@testing-library/jest-dom/extend-expect';
 import Header from './Header';
 import { BrowserRouter } from 'react-router-dom';
@@ -20,6 +21,6 @@ describe('Testing Header component', () => {
       </BrowserRouter>
     );
     const title = getByRole('heading');
-    expect(title).toHaveTextContent('Grocery Store');
+    expect(title).toHaveTextContent('Unsearch!');
   });
 });

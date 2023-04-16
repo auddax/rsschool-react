@@ -1,5 +1,6 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
+import { describe, it, expect, afterEach } from 'vitest';
 import '@testing-library/jest-dom/extend-expect';
 import PhotoCard from './PhotoCard';
 import { IPhoto } from '../../types/interfaces';
@@ -57,7 +58,7 @@ describe('Testing PhotoCard component', () => {
   afterEach(cleanup);
 
   const props = {
-    handlerClick: jest.fn(),
+    handlerClick: () => {},
     data: photo,
     key: 'key',
   };
