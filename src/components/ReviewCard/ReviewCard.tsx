@@ -17,13 +17,13 @@ const ReviewCard = (props: ReviewCardProps) => {
         </figure>
       )}
       <p className={styles['card-price']}>
-        <>Отзыв: {reviewText}</>
+        <>Описание фото: {reviewText}</>
       </p>
       <p className={styles['card-price']}>
-        <>Дата покупки: {purchaseDate}</>
+        <>Дата съемки: {purchaseDate}</>
       </p>
       <p className={styles['card-price']}>
-        <>Категория товара: {productType}</>
+        <>Категория: {productType}</>
       </p>
       <p className={styles['card-price']}>
         <>Оценка: {rate}</>

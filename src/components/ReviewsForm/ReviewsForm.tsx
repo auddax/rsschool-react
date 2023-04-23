@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import SuccessModal from '../SuccessModal';
-import { productsList } from '../../../__mocks__/products';
 import { IReview } from 'types/interfaces';
 import styles from './ReviewsForm.module.scss';
 import { formSlice } from '../../store/reducers/FormSlice';
@@ -30,21 +29,22 @@ const ReviewsForm = () => {
     }, 2000);
   };
 
-  const types = productsList
-    .map((product) => product[5])
-    .filter((product, index, array) => array.indexOf(product) === index)
-    .sort();
-
   return (
     <div>
-      <h2 className={styles['reviews-header']}>Оставьте свой отзыв о покупке!</h2>
+      <h2 className={styles['reviews-header']}>Создайте свою галлерею!</h2>
       <form className={styles['reviews-form']} onSubmit={handleSubmit(onSubmit)}>
+        <fieldset className={styles['form-item']}>
+          <label htmlFor="photo" className={`${styles['item__label']} ${styles['label_required']}`}>
+            Фото для загрузки
+          </label>
+          <input type="file" id="photo" {...register('photo')} required />
+        </fieldset>
         <fieldset className={styles['form-item']}>
           <label
             htmlFor="reviewText"
             className={`${styles['item__label']} ${styles['label_required']}`}
           >
-            Напишите о своих впечатлениях
+            Описание фото
           </label>
           <textarea id="reviewText" rows={7} {...register('reviewText')} required />
         </fieldset>
@@ -53,20 +53,20 @@ const ReviewsForm = () => {
             htmlFor="purchaseDate"
             className={`${styles['item__label']} ${styles['label_required']}`}
           >
-            Дата покупки
+            Дата съемки
           </label>
           <input type="date" id="purchaseDate" {...register('purchaseDate')} required />
         </fieldset>
         <fieldset className={styles['form-item']}>
           <label htmlFor="productType" className={styles['item__label']}>
-            Тип товара
+            Категория
           </label>
           <select id="productType" {...register('productType')}>
-            {types.map((type, index) => (
-              <option value={type} key={'type-' + index}>
-                {type}
-              </option>
-            ))}
+            <option value="Портрет">Портрет</option>
+            <option value="Пейзаж">Пейзаж</option>
+            <option value="Животные">Животные</option>
+            <option value="Архитектура">Архитектура</option>
+            <option value="Натюрморт">Натюрморт</option>
           </select>
         </fieldset>
         <fieldset className={styles['form-item']}>
@@ -80,12 +80,12 @@ const ReviewsForm = () => {
         </fieldset>
         <fieldset className={styles['form-item-row']}>
           <label htmlFor="visibility" className={styles['item__label']}>
-            Оставить отзыв анонимно
+            Не показывать имя
           </label>
           <input type="checkbox" id="visibility" {...register('visibility')} />
         </fieldset>
         <fieldset className={styles['form-item-row']}>
-          <legend className={styles['item__label']}>Оцените товар</legend>
+          <legend className={styles['item__label']}>Добавьте оценку</legend>
           <input type="radio" id="rate-1" value="1" {...register('rate')} />
           <label htmlFor="rate-1">1</label>
           <input type="radio" id="rate-2" value="2" {...register('rate')} />
@@ -97,15 +97,9 @@ const ReviewsForm = () => {
           <input type="radio" id="rate-5" value="5" {...register('rate')} />
           <label htmlFor="rate-5">5</label>
         </fieldset>
-        <fieldset className={styles['form-item']}>
-          <label htmlFor="photo" className={styles['item__label']}>
-            Фото товара
-          </label>
-          <input type="file" id="photo" {...register('photo')} />
-        </fieldset>
-        <button className={styles['form-button']}>Отправить отзыв</button>
+        <button className={styles['form-button']}>Загрузить фото</button>
       </form>
-      {isReviewSend && <SuccessModal data={{ type: 'success', data: 'Ваш отзыв отправлен!' }} />}
+      {isReviewSend && <SuccessModal data={{ type: 'success', data: 'Ваше фото отправлено!' }} />}
     </div>
   );
 };

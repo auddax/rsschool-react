@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { unsplashAPI } from './api/api';
 import { useAppDispatch } from './hooks/redux';
 import { photoSlice } from './store/reducers/PhotoSlice';
@@ -12,20 +12,20 @@ import NotFound from './pages/NotFoundPage';
 import './App.css';
 
 const App = () => {
-  // const { setPhotosList } = photoSlice.actions;
-  // const dispatch = useAppDispatch();
-  // const { data, error, isLoading, isSuccess } = unsplashAPI.useGetPhotosListQuery(10);
+  const { setPhotosList } = photoSlice.actions;
+  const dispatch = useAppDispatch();
+  const { data, error, isLoading, isSuccess } = unsplashAPI.useGetPhotosListQuery(10);
 
-  // useEffect(() => {
-  //   dispatch(
-  //     setPhotosList({
-  //       photos: data,
-  //       isLoading,
-  //       isSuccess,
-  //       error,
-  //     })
-  //   );
-  // }, [data, dispatch, error, isLoading, isSuccess, setPhotosList]);
+  useEffect(() => {
+    dispatch(
+      setPhotosList({
+        photos: data,
+        isLoading,
+        isSuccess,
+        error,
+      })
+    );
+  }, [data, dispatch, error, isLoading, isSuccess, setPhotosList]);
 
   return (
     <>
@@ -35,9 +35,9 @@ const App = () => {
           <Route index element={<MainPage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/gallery" element={<ReviewsPage />} />
           <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/404" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

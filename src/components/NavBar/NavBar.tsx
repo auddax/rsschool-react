@@ -15,8 +15,8 @@ const navLinks: ILink[] = [
     route: '/about',
   },
   {
-    text: 'Reviews',
-    route: '/reviews',
+    text: 'Gallery',
+    route: '/gallery',
   },
 ];
 
