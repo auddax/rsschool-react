@@ -3,7 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import express, { NextFunction, Request, Response } from 'express';
 import { createServer as createViteServer } from 'vite';
-import { PipeableStream, RenderToPipeableStreamOptions } from 'react-dom/server';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -24,12 +23,10 @@ async function createServer() {
 
     try {
       let template = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8');
+
       template = await vite.transformIndexHtml(url, template);
       const html = template.split(`<!--app-html-->`);
-      const render = (await vite.ssrLoadModule('./src/entry-server.tsx')).render as (
-        url: string,
-        options?: RenderToPipeableStreamOptions
-      ) => PipeableStream;
+      const { render } = await vite.ssrLoadModule('src/entry-server.tsx');
 
       const { pipe } = render(url, {
         onShellReady() {
@@ -50,9 +47,9 @@ async function createServer() {
     }
   });
 
-  app.listen(5173, () => {
-    console.log('http://localhost:5173');
-  });
+  const port = process.env.PORT || 5173;
+
+  app.listen(port, () => console.log(`App is listening on http://localhost:${port}`));
 }
 
 createServer();
