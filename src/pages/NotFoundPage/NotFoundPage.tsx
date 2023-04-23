@@ -4,10 +4,10 @@ import styles from './NotFoundPage.module.scss';
 class NotFound extends React.Component {
   render(): ReactNode {
     return (
-      <main className={styles['not-found']}>
+      <section className={styles['not-found']}>
         <h1>404</h1>
         <h2>Sorry, page not found</h2>
-      </main>
+      </section>
     );
   }
 }

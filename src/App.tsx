@@ -3,9 +3,11 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { unsplashAPI } from './api/api';
 import { useAppDispatch } from './hooks/redux';
 import { photoSlice } from './store/reducers/PhotoSlice';
-import Main from './pages/MainPage';
-import About from './pages/AboutPage';
-import Reviews from './pages/ReviewsPage';
+import Header from './components/Header';
+import Layout from './components/Layout';
+import MainPage from './pages/MainPage';
+import AboutPage from './pages/AboutPage';
+import ReviewsPage from './pages/ReviewsPage';
 import NotFound from './pages/NotFoundPage';
 import './App.css';
 
@@ -26,14 +28,18 @@ const App = () => {
   }, [data, dispatch, error, isLoading, isSuccess, setPhotosList]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route index element={<Main />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/reviews" element={<Reviews />} />
-      <Route path="/404" element={<NotFound />} />
-      <Route path="*" element={<Navigate to="/404" replace />} />
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" replace />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
