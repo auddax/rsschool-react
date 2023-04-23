@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const apiKey = import.meta.env.VITE_API_KEY; // Place your Unsplash API key here
+const apiKey = 'ojhrSFiXBcnUUJ5_HczHHDi66RxThDJoA9p7RQCfj38';
 const baseUrl = 'https://api.unsplash.com';
 
 export const unsplashAPI = createApi({
