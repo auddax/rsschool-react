@@ -7,7 +7,8 @@ import { setupStore } from './store/store';
 
 const store = setupStore();
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.hydrateRoot(
+  document.getElementById('root') as HTMLElement,
   <BrowserRouter>
     <Provider store={store}>
       <App />

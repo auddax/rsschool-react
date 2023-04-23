@@ -27,8 +27,8 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/main" />} />
-      <Route path="/main" element={<Main />} />
+      <Route path="/" element={<Main />} />
+      <Route index element={<Main />} />
       <Route path="/about" element={<About />} />
       <Route path="/reviews" element={<Reviews />} />
       <Route path="/404" element={<NotFound />} />
