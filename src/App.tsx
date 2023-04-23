@@ -12,20 +12,20 @@ import NotFound from './pages/NotFoundPage';
 import './App.css';
 
 const App = () => {
-  const { setPhotosList } = photoSlice.actions;
-  const dispatch = useAppDispatch();
-  const { data, error, isLoading, isSuccess } = unsplashAPI.useGetPhotosListQuery(10);
+  // const { setPhotosList } = photoSlice.actions;
+  // const dispatch = useAppDispatch();
+  // const { data, error, isLoading, isSuccess } = unsplashAPI.useGetPhotosListQuery(10);
 
-  useEffect(() => {
-    dispatch(
-      setPhotosList({
-        photos: data,
-        isLoading,
-        isSuccess,
-        error,
-      })
-    );
-  }, [data, dispatch, error, isLoading, isSuccess, setPhotosList]);
+  // useEffect(() => {
+  //   dispatch(
+  //     setPhotosList({
+  //       photos: data,
+  //       isLoading,
+  //       isSuccess,
+  //       error,
+  //     })
+  //   );
+  // }, [data, dispatch, error, isLoading, isSuccess, setPhotosList]);
 
   return (
     <>
@@ -33,6 +33,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/404" element={<NotFound />} />

@@ -1,7 +1,8 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-const Layout = (props: PropsWithChildren) => {
-  return <main>{props.children}</main>;
+const Layout = () => {
+  return <Outlet />;
 };
 
 export default Layout;
